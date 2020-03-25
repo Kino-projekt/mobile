@@ -39,21 +39,18 @@ class _RegisterState extends State<Register> {
                     labelText: 'Enter your password'
                   ),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
                 FlatButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) print(email + password);
                   },
                   color: Colors.pinkAccent,
                   
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'ZAREJESTRUJ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  child: Text(
+                    'ZAREJESTRUJ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

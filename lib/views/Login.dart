@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -8,11 +9,21 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   String email = '';
   String password = '';
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+
+  _displaySnackBar(BuildContext context) {
+    final snackBar = SnackBar(
+      content: Text('Logowanie'),
+      backgroundColor: Colors.pinkAccent,
+    );
+    _scaffoldKey.currentState.showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Zaloguj się'),
         backgroundColor: Colors.black,
@@ -38,21 +49,20 @@ class _LoginState extends State<Login> {
                     labelText: 'Enter your password'
                   ),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
                 FlatButton(
                   onPressed: () {
-                    if (_formKey.currentState.validate()) print(email + password);
+                    if (_formKey.currentState.validate()) {
+                      _displaySnackBar(context);
+                    }
                   },
                   color: Colors.pinkAccent,
                   
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'ZALOGUJ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  child: Text(
+                    'ZALOGUJ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
