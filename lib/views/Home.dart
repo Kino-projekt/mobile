@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/models/Film.dart';
+import 'package:mobile/components/drawers/DrawerAnonymous.dart';
+import 'package:mobile/components/drawers/DrawerUser.dart';
+import 'package:mobile/components/drawers/DrawerAdmin.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -19,6 +22,8 @@ class _Home extends State<Home> {
     Film(age: 7, hour: '20:00', title: 'Inny film5', img: 'https://i.pinimg.com/originals/94/e6/98/94e6987380d3b7d24e29f4b6b475d49a.jpg'),
     Film(age: 7, hour: '20:00', title: 'Inny film6', img: 'https://i.pinimg.com/originals/94/e6/98/94e6987380d3b7d24e29f4b6b475d49a.jpg'),
   ];
+
+  Widget drawer = DrawerAdmin();
 
 
   Widget filmTemplate(String title, String hour, String img) {
@@ -77,56 +82,7 @@ class _Home extends State<Home> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Center(
-                child: Text('SCUTER',
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  )),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.send,
-                color: Colors.black,
-              ),
-              title: Text(
-                'Logowanie',
-                style: TextStyle(
-                  fontSize: 18.0
-                  ),
-                ),
-              onTap: () {
-                Navigator.pushNamed(context, '/login');
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.add_circle,
-                color: Colors.black,
-              ),
-              title: Text(
-                'Rejestracja',
-                style: TextStyle(
-                  fontSize: 18.0
-                  ),
-                ),
-              onTap: () {
-                Navigator.pushNamed(context, '/register');
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: drawer,
       body: Center(
         child: ListView(
           scrollDirection: Axis.vertical,
