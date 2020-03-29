@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/services/auth.dart';
 
 
 class Login extends StatefulWidget {
@@ -11,6 +12,7 @@ class _LoginState extends State<Login> {
   String password = '';
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+  final _auth = AuthService();
 
   _displaySnackBar(BuildContext context) {
     final snackBar = SnackBar(
@@ -38,7 +40,7 @@ class _LoginState extends State<Login> {
                   onChanged: (val) => setState(() => email = val),
                   validator: (val) => val.isEmpty ? 'Plese enter some text' : null,
                   decoration: InputDecoration(
-                    labelText: 'Enter your username'
+                    labelText: 'Enter your email'
                   ),
                 ),
                 TextFormField(
@@ -53,6 +55,7 @@ class _LoginState extends State<Login> {
                 FlatButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
+                      _auth.signIn(email, password);
                       _displaySnackBar(context);
                     }
                   },

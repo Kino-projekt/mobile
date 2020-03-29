@@ -23,7 +23,7 @@ class _Home extends State<Home> {
     Film(age: 7, hour: '20:00', title: 'Inny film6', img: 'https://i.pinimg.com/originals/94/e6/98/94e6987380d3b7d24e29f4b6b475d49a.jpg'),
   ];
 
-  Widget drawer = DrawerAdmin();
+  Widget drawer = DrawerAnonymous();
 
 
   Widget filmTemplate(String title, String hour, String img) {
